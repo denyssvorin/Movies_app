@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/button_toggle_remove_to_watchlist"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:backgroundTint="#C3C3C3"
+        android:text="@string/remove_from_watchlist"
+        android:textAllCaps="true"
+        android:textColor="#878787"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:iconTint="#878787"/>
+
+</FrameLayout>

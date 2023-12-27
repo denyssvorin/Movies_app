@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".moviedetails.MovieDetailsFragment">
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/top_divider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:elevation="10dp"
+        app:cardCornerRadius="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/image_view_movie_image"
+            android:layout_width="120dp"
+            android:layout_height="180dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/Avengers" />
+
+    </androidx.cardview.widget.CardView>
+
+
+    <TextView
+        android:id="@+id/text_view_movie_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/card_image"
+        app:layout_constraintEnd_toStartOf="@id/text_view_rating"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toEndOf="@id/card_image"
+        app:layout_constraintTop_toTopOf="@id/card_image"
+        app:layout_constraintVertical_bias="0.05"
+        tools:text="Title" />
+
+    <androidx.appcompat.widget.AppCompatToggleButton
+        android:id="@+id/button_toggle_add_to_watchlist"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/round_outline"
+        android:backgroundTint="#C3C3C3"
+        android:padding="10dp"
+        android:paddingStart="12dp"
+        android:textAllCaps="true"
+        android:textColor="#878787"
+        android:textOff="@string/add_to_watchlist"
+        android:textOn="@string/remove_from_watchlist"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:iconGravity="textStart"
+        app:iconPadding="10dp"
+        app:iconSize="12dp"
+        app:iconTint="#878787"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@+id/text_view_movie_title"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_movie_title" />
+
+    <Button
+        android:id="@+id/button_watch_trailer"
+        style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+        android:layout_width="120dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text="@string/watch_trailer"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/text_view_movie_title"
+        app:layout_constraintTop_toBottomOf="@+id/button_toggle_add_to_watchlist" />
+
+    <TextView
+        android:id="@+id/text_view_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/text_view_rating_10"
+        app:layout_constraintEnd_toStartOf="@id/text_view_rating_10"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/text_view_movie_title"
+        app:layout_constraintTop_toTopOf="@id/text_view_rating_10"
+        app:layout_constraintVertical_bias="1.0"
+        tools:text="7.8" />
+
+    <TextView
+        android:id="@+id/text_view_rating_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:gravity="end"
+        android:text="/10"
+        android:textColor="#878787"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/text_view_movie_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/text_view_movie_title"
+        app:layout_constraintTop_toTopOf="@+id/text_view_movie_title"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider_after_first_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_image" />
+
+    <TextView
+        android:id="@+id/text_view_short_description_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="Short description"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/divider_after_first_section"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/divider_after_first_section"
+        app:layout_constraintTop_toBottomOf="@+id/divider_after_first_section" />
+
+    <TextView
+        android:id="@+id/text_view_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="#878787"
+        app:layout_constraintEnd_toEndOf="@+id/divider_after_first_section"
+        app:layout_constraintStart_toStartOf="@+id/divider_after_first_section"
+        app:layout_constraintTop_toBottomOf="@id/text_view_short_description_title"
+        tools:text="Armed with only one word, Tenet, and fighting for the survival of the entire world, a Protagonist journeys through a twilight world of international espionage on a mission that will unfold in something beyond real time." />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider_after_second_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_description" />
+
+    <TextView
+        android:id="@+id/text_view_details_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="Details"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/divider_after_second_section"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/divider_after_second_section"
+        app:layout_constraintTop_toBottomOf="@+id/divider_after_second_section" />
+
+    <TextView
+        android:id="@+id/text_view_genre_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Genre"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/divider_after_second_section"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="@id/divider_after_second_section"
+        app:layout_constraintTop_toBottomOf="@id/text_view_details_title" />
+
+    <TextView
+        android:id="@+id/text_view_genre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="#878787"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/text_view_genre_title"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toEndOf="@id/text_view_genre_title"
+        app:layout_constraintTop_toTopOf="@+id/text_view_genre_title"
+        tools:text="Action, Sci-Fi" />
+
+    <TextView
+        android:id="@+id/text_view_released_date_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Released date"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/text_view_genre_title"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@id/text_view_genre_title"
+        app:layout_constraintTop_toBottomOf="@id/text_view_genre_title" />
+
+    <TextView
+        android:id="@+id/text_view_released_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="#878787"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/text_view_released_date_title"
+        app:layout_constraintStart_toEndOf="@id/text_view_released_date_title"
+        app:layout_constraintTop_toTopOf="@id/text_view_released_date_title"
+        tools:text="2020, 3 September" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
