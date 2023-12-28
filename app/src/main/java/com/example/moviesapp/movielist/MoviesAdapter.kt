@@ -1,8 +1,10 @@
 package com.example.moviesapp.movielist
 
 import android.content.Context
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -10,7 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.moviesapp.data.Movie
 import com.example.moviesapp.databinding.MovieListItemBinding
-
+import com.example.moviesapp.utils.formatTitle
+@RequiresApi(Build.VERSION_CODES.O)
 class MoviesAdapter(
     private val listener: OnMovieClickListener,
     private val context: Context
@@ -37,7 +40,7 @@ class MoviesAdapter(
                     .load(movie.photo)
                     .centerCrop()
                     .into(imageViewMovieImage)
-                textViewMovieTitle.text = movie.title
+                textViewMovieTitle.text = formatTitle(movie)
                 textViewMovieDuration.text = movie.duration
                 textViewMovieGenre.text = movie.genre
 
