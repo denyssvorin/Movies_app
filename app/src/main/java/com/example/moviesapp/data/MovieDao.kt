@@ -12,15 +12,15 @@ interface MovieDao {
 
     fun getMovies(sortOrder: SortOrder): Flow<List<Movie>> =
         when(sortOrder) {
-            SortOrder.BY_DATE -> getTasksSortedByDateCreated()
-            SortOrder.BY_TITLE -> getTasksSortedByName()
+            SortOrder.BY_DATE -> getMoviesSortedByReleaseDate()
+            SortOrder.BY_TITLE -> getMoviesSortedByTitle()
         }
 
     @Query("SELECT * FROM movie_table ORDER BY title ASC")
-    fun getTasksSortedByName(): Flow<List<Movie>>
+    fun getMoviesSortedByTitle(): Flow<List<Movie>>
 
     @Query("SELECT * FROM movie_table ORDER BY releasedDate DESC")
-    fun getTasksSortedByDateCreated(): Flow<List<Movie>>
+    fun getMoviesSortedByReleaseDate(): Flow<List<Movie>>
 
     @Query("SELECT * FROM movie_table WHERE title LIKE '%' || :searchQuery || '%'")
     suspend fun getMovieByName(searchQuery: String): Movie
