@@ -6,6 +6,9 @@ import androidx.annotation.RequiresApi
 import com.example.moviesapp.data.Movie
 import com.example.moviesapp.data.MovieDao
 import com.example.moviesapp.data.TempData
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
@@ -22,6 +25,7 @@ class MoviesLoadRepository @Inject constructor(
         dataList.forEach { data: TempData ->
 
             val releasedDate = convertStringToTimestamp3(data.releasedDate)
+
             val movie = Movie(
                 title = data.title,
                 description = data.description,
@@ -31,7 +35,27 @@ class MoviesLoadRepository @Inject constructor(
                 releasedDate = releasedDate,
                 trailerLink = data.trailerLink
             )
+
+            CoroutineScope(Dispatchers.IO).launch {
+                val existingMovie = dao.getMovieByName(data.title)
+                val updatedMovie = if (existingMovie != null) {
+                    existingMovie.copy(
+                        title = data.title,
+                        description = data.description,
+                        rating = data.rating,
+                        duration = data.duration,
+                        genre = data.genre,
+                        releasedDate = releasedDate,
+                        isInWatchList = existingMovie.isInWatchList,  // isInWatchList value from local database
+                    )
+                } else {
+                    movie
+                }
+                dao.insert(updatedMovie)
+            }
+
             Log.i("TAG", "repository loadData: insert: ${data.title}")
+
             dao.insert(movie)
         }
     }

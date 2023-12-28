@@ -22,6 +22,9 @@ interface MovieDao {
     @Query("SELECT * FROM movie_table ORDER BY releasedDate DESC")
     fun getTasksSortedByDateCreated(): Flow<List<Movie>>
 
+    @Query("SELECT * FROM movie_table WHERE title LIKE '%' || :searchQuery || '%'")
+    suspend fun getMovieByName(searchQuery: String): Movie
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(movie: Movie)
 
